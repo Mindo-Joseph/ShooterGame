@@ -2,9 +2,13 @@
   "name": "ShooterGame",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
