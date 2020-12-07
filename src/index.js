@@ -6,6 +6,7 @@ import GameScene from './scenes/GameScene';
 
 const config = {
   type: Phaser.AUTO,
+  mode: Phaser.Scale.FIT,
   width: 960,
   height: 540,
   backgroundColor: 'black',
