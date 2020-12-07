@@ -71,7 +71,7 @@ export default class PreloaderScene extends Phaser.Scene {
       this.ready();
     });
 
-    // this.timedEvent = this.time.delayedCall(10000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(10000, this.ready, [], this);
 
     this.load.image('backgroundlayer', 'assets/background/backgroundlayer.png');
     this.load.image('foregroundlayer', 'assets/background/foregroundlayer.png');
@@ -80,6 +80,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('compass', 'assets/screen_assets/compass.png');
     this.load.image('indicator', 'assets/screen_assets/indicator.png');
     this.load.image('meters', 'assets/screen_assets/meters.png');
+    this.load.image('spacebackground', 'assets/background/spacebackground.png');
+    this.load.image('startbutton', 'assets/startgame.png');
 
     this.load.spritesheet('eye-guy', 'assets/sprites/baddie[eye-guy].png', {
       frameWidth: 277,
@@ -103,11 +105,11 @@ export default class PreloaderScene extends Phaser.Scene {
     });
   }
 
-  // ready() {
-  //   this.scene.start('Title');
-  //   this.readyCount += 1;
-  //   if (this.readyCount === 2) {
-  //     this.scene.start('Title');
-  //   }
-  // }
+  ready() {
+    this.scene.start('titleScene');
+    this.readyCount += 1;
+    if (this.readyCount === 2) {
+      this.scene.start('titleScene');
+    }
+  }
 }

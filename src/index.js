@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
+import TitleScene from './scenes/TitleScene';
+import GameScene from './scenes/GameScene';
 
 const config = {
   type: Phaser.AUTO,
@@ -27,6 +29,8 @@ class Game extends Phaser.Game {
     super(config);
     this.scene.add('BootScene', BootScene);
     this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('titleScene', TitleScene);
+    this.scene.add('gameScene', GameScene);
     this.scene.start('BootScene');
   }
 }
