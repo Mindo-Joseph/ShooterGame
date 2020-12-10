@@ -1,4 +1,6 @@
+/* eslint-disable import/extensions */
 import Phaser from 'phaser';
+import rexvirtualjoystickplugin from '../plugins/rexvirtualjoystickplugin.min.js';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -73,36 +75,12 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(10000, this.ready, [], this);
 
-    this.load.image('backgroundlayer', 'assets/background/backgroundlayer.png');
-    this.load.image('foregroundlayer', 'assets/background/foregroundlayer.png');
-    this.load.image('actions', 'assets/screen_assets/actions.png');
-    this.load.image('all', 'assets/screen_assets/all.png');
-    this.load.image('compass', 'assets/screen_assets/compass.png');
-    this.load.image('indicator', 'assets/screen_assets/indicator.png');
-    this.load.image('meters', 'assets/screen_assets/meters.png');
-    this.load.image('spacebackground', 'assets/background/spacebackground.png');
+    this.load.image('player', 'assets/player.png');
+    this.load.image('bullet', 'assets/bullet.png');
+    this.load.image('joystick', 'assets/joystick.png');
     this.load.image('startbutton', 'assets/startgame.png');
 
-    this.load.spritesheet('eye-guy', 'assets/sprites/baddie[eye-guy].png', {
-      frameWidth: 277,
-      frameHeight: 265,
-    });
-    this.load.spritesheet('legs-guy', 'assets/sprites/baddie[legs].png', {
-      frameWidth: 323,
-      frameHeight: 257,
-    });
-    this.load.spritesheet('bigGun', 'assets/sprites/bigGun.png', {
-      frameWidth: 306,
-      frameHeight: 107,
-    });
-    this.load.spritesheet('mainChar', 'assets/sprites/mainChar.png', {
-      frameWidth: 250,
-      frameHeight: 415,
-    });
-    this.load.spritesheet('smallGun', 'assets/sprites/smallGun.png', {
-      frameWidth: 159,
-      frameHeight: 57,
-    });
+    this.load.plugin('rexvirtualjoystickplugin', rexvirtualjoystickplugin, true);
   }
 
   ready() {
