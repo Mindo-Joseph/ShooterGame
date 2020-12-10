@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import TitleScene from './scenes/TitleScene';
@@ -9,7 +10,7 @@ const config = {
   mode: Phaser.Scale.FIT,
   width: 960,
   height: 540,
-  backgroundColor: 'black',
+  backgroundColor: '#56ac68',
   autoCenter: Phaser.Scale.CENTER_BOTH,
   physics: {
     default: 'arcade',
@@ -19,6 +20,9 @@ const config = {
         y: 0,
       },
     },
+  },
+  input: {
+    activePointers: 3,
   },
   scene: [],
   pixelArt: true,
