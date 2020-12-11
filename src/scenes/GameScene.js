@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 import Bullet from '../Objects/Bullet';
+import ZombieEnemy from '../Zombie';
+import WomanEnemy from '../WomanEnemy';
 
 const MAX_PLAYER_SPEED = 200;
 export default class GameScene extends Phaser.Scene {
@@ -58,14 +60,33 @@ export default class GameScene extends Phaser.Scene {
 
     this.bullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
     this.bulletCooldown = 0;
-    // this.physics.add.collider(player,platform)
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.keySpace = this.input.keyboard.addKey(
-      Phaser.Input.Keyboard.KeyCodes.SPACE,
-    );
+    this.enemies = this.add.group();
+    this.time.addEvent({
+      delay: 2000,
+      callback() {
+        const enemy = new ZombieEnemy(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          Phaser.Math.Between(0, this.game.config.height),
+        );
+        this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true,
+    });
+    this.time.addEvent({
+      delay: 10000,
+      callback() {
+        const enemy = new WomanEnemy(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          Phaser.Math.Between(0, this.game.config.height),
+        );
+        this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true,
+    });
   }
 
   update(time, delta) {
