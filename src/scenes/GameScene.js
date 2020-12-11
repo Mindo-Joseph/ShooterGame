@@ -87,6 +87,25 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+    this.shootTimer = this.time.addEvent({
+      delay: 1000,
+      callback() {
+        const laser = new Bullet(
+          this,
+          this.x,
+          this.y,
+        );
+        laser.setScale(this.scaleX);
+        this.bullets.add(laser);
+
+        const bullet = this.bullets.get().setActive(true).setVisible(true);
+        Phaser.Actions.Call(this.enemies.getChildren(), (enemy) => {
+          bullet.fire(enemy, 'enemy');
+        }, this);
+      },
+      callbackScope: this,
+      loop: true,
+    });
   }
 
   update(time, delta) {
@@ -102,7 +121,7 @@ export default class GameScene extends Phaser.Scene {
       // Fire bullet according to joystick
       if (this.shootJoyStick.force >= this.shootJoyStick.radius && this.bulletCooldown <= 0) {
         const bullet = this.bullets.get().setActive(true).setVisible(true);
-        bullet.fire(this.player);
+        bullet.fire(this.player, 'shooter');
 
         this.bulletCooldown = 100;
       }
@@ -121,6 +140,14 @@ export default class GameScene extends Phaser.Scene {
       // Stop moving
       this.player.setVelocityX(0);
       this.player.setVelocityY(0);
+    }
+  }
+
+  onDestroy() {
+    if (this.shootTimer !== undefined) {
+      if (this.shootTimer) {
+        this.shootTimer.remove(false);
+      }
     }
   }
 }
