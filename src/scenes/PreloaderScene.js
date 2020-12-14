@@ -1,15 +1,12 @@
 /* eslint-disable import/extensions */
 import Phaser from 'phaser';
-import rexvirtualjoystickplugin from '../plugins/rexvirtualjoystickplugin.min.js';
+import rexvirtualjoystickplugin from
+    '../plugins/rexvirtualjoystickplugin.min.js';
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor() {
-    super('Preloader');
-  }
+  constructor() { super('Preloader'); }
 
-  init() {
-    this.readyCount = 0;
-  }
+  init() { this.readyCount = 0; }
 
   preload() {
     const progressBar = this.add.graphics();
@@ -17,37 +14,37 @@ export default class PreloaderScene extends Phaser.Scene {
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
 
-    const { width } = this.cameras.main;
-    const { height } = this.cameras.main;
+    const {width} = this.cameras.main;
+    const {height} = this.cameras.main;
     const loadingText = this.make.text({
-      x: width / 2,
-      y: height / 2 - 50,
-      text: 'Loading...',
-      style: {
-        font: '20px monospace',
-        fill: '#ffffff',
+      x : width / 2,
+      y : height / 2 - 50,
+      text : 'Loading...',
+      style : {
+        font : '20px monospace',
+        fill : '#ffffff',
       },
     });
     loadingText.setOrigin(0.5, 0.5);
 
     const percentText = this.make.text({
-      x: width / 2,
-      y: height / 2 - 5,
-      text: '0%',
-      style: {
-        font: '18px monospace',
-        fill: '#ffffff',
+      x : width / 2,
+      y : height / 2 - 5,
+      text : '0%',
+      style : {
+        font : '18px monospace',
+        fill : '#ffffff',
       },
     });
     percentText.setOrigin(0.5, 0.5);
 
     const assetText = this.make.text({
-      x: width / 2,
-      y: height / 2 + 50,
-      text: '',
-      style: {
-        font: '18px monospace',
-        fill: '#ffffff',
+      x : width / 2,
+      y : height / 2 + 50,
+      text : '',
+      style : {
+        font : '18px monospace',
+        fill : '#ffffff',
       },
     });
     assetText.setOrigin(0.5, 0.5);
@@ -60,9 +57,9 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    this.load.on('fileprogress', (file) => {
-      assetText.setText(`Loading asset: ${file.key}`);
-    });
+    this.load.on(
+        'fileprogress',
+        (file) => { assetText.setText(`Loading asset: ${file.key}`); });
 
     this.load.on('complete', () => {
       progressBar.destroy();
@@ -82,10 +79,11 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('woman', 'assets/womanenemy.png');
     this.load.image('startbutton', 'assets/startgame.png');
     this.load.spritesheet('explosion', 'assets/explode.png', {
-      frameHeight: 32,
-      frameWidth: 32,
+      frameHeight : 32,
+      frameWidth : 32,
     });
-    this.load.plugin('rexvirtualjoystickplugin', rexvirtualjoystickplugin, true);
+    this.load.plugin('rexvirtualjoystickplugin', rexvirtualjoystickplugin,
+                     true);
   }
 
   ready() {
