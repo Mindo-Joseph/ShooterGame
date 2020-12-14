@@ -4,6 +4,8 @@ import ZombieEnemy from '../Zombie';
 import WomanEnemy from '../WomanEnemy';
 
 const MAX_PLAYER_SPEED = 200;
+let life = 3;
+let kills = 0;
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('gameScene');
@@ -11,6 +13,12 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     this.player = this.physics.add.sprite(200, 200, 'player');
+    this.anims.create({
+      key: 'explode',
+      frameRate: 10,
+      frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9 }),
+      repeat: -1,
+    });
     this.player.setCollideWorldBounds(true);
     this.player.setOrigin(0.5, 0.72);
 
@@ -87,7 +95,7 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
-    this.shootTimer = this.time.addEvent({
+    this.time.addEvent({
       delay: 1000,
       callback() {
         const laser = new Bullet(
@@ -109,6 +117,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update(time, delta) {
+    this.physics.collide(this.bullets, this.enemies, this.hitEnemy, null, this);
+    this.physics.collide(this.bullets, this.player, this.hitPlayer, null, this);
+    this.physics.collide(this.player, this.enemy, this.hitEnemy, null, this);
     if (this.bulletCooldown > 0) {
       // Reduce bullet cooldown
       this.bulletCooldown -= delta;
@@ -143,11 +154,19 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  onDestroy() {
-    if (this.shootTimer !== undefined) {
-      if (this.shootTimer) {
-        this.shootTimer.remove(false);
-      }
+  hitEnemy() {
+    const { enemies } = this;
+    enemies.kill();
+    // eslint-disable-next-line no-unused-vars
+    kills += 1;
+  }
+
+  hitPlayer() {
+    if (life > 0) {
+      life -= 1;
+      this.scene.restart();
+    } else {
+      this.scene.start('titleScene');
     }
   }
 }

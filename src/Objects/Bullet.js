@@ -15,8 +15,10 @@ export default class Bullet extends Phaser.Physics.Arcade.Sprite {
     this.x = shooter.x + (50 * Math.cos(this.rotation));
     this.y = shooter.y + (50 * Math.sin(this.rotation));
     if (role === 'enemy') {
-      this.setVelocityX(BULLET_SPEED * Math.cos(Math.PI * (this.angle / 180)) * -1);
-      this.setVelocityY(BULLET_SPEED * Math.sin(Math.PI * (this.angle / 180)) * -1);
+      this.x = shooter.x + (50 * Math.cos(Math.PI));
+      this.setRotation(Math.PI);
+      this.setVelocityX((BULLET_SPEED) * Math.cos(Math.PI * (this.angle / 180)));
+      this.setVelocityY((BULLET_SPEED) * Math.sin(Math.PI * (this.angle / 180)) * -1);
     } else {
       this.setVelocityX(BULLET_SPEED * Math.cos(Math.PI * (this.angle / 180)));
       this.setVelocityY(BULLET_SPEED * Math.sin(Math.PI * (this.angle / 180)));
