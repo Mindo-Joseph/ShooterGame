@@ -1,12 +1,15 @@
 /* eslint-disable import/extensions */
-import Phaser from 'phaser';
-import rexvirtualjoystickplugin from
-    '../plugins/rexvirtualjoystickplugin.min.js';
+import Phaser from "phaser";
+import rexvirtualjoystickplugin from "../plugins/rexvirtualjoystickplugin.min.js";
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor() { super('Preloader'); }
+  constructor() {
+    super("Preloader");
+  }
 
-  init() { this.readyCount = 0; }
+  init() {
+    this.readyCount = 0;
+  }
 
   preload() {
     const progressBar = this.add.graphics();
@@ -14,42 +17,42 @@ export default class PreloaderScene extends Phaser.Scene {
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
 
-    const {width} = this.cameras.main;
-    const {height} = this.cameras.main;
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
     const loadingText = this.make.text({
-      x : width / 2,
-      y : height / 2 - 50,
-      text : 'Loading...',
-      style : {
-        font : '20px monospace',
-        fill : '#ffffff',
+      x: width / 2,
+      y: height / 2 - 50,
+      text: "Loading...",
+      style: {
+        font: "20px monospace",
+        fill: "#ffffff",
       },
     });
     loadingText.setOrigin(0.5, 0.5);
 
     const percentText = this.make.text({
-      x : width / 2,
-      y : height / 2 - 5,
-      text : '0%',
-      style : {
-        font : '18px monospace',
-        fill : '#ffffff',
+      x: width / 2,
+      y: height / 2 - 5,
+      text: "0%",
+      style: {
+        font: "18px monospace",
+        fill: "#ffffff",
       },
     });
     percentText.setOrigin(0.5, 0.5);
 
     const assetText = this.make.text({
-      x : width / 2,
-      y : height / 2 + 50,
-      text : '',
-      style : {
-        font : '18px monospace',
-        fill : '#ffffff',
+      x: width / 2,
+      y: height / 2 + 50,
+      text: "",
+      style: {
+        font: "18px monospace",
+        fill: "#ffffff",
       },
     });
     assetText.setOrigin(0.5, 0.5);
 
-    this.load.on('progress', (value) => {
+    this.load.on("progress", (value) => {
       // eslint-disable-next-line radix
       percentText.setText(`${parseInt(value * 100)}%`);
       progressBar.clear();
@@ -57,11 +60,11 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    this.load.on(
-        'fileprogress',
-        (file) => { assetText.setText(`Loading asset: ${file.key}`); });
+    this.load.on("fileprogress", (file) => {
+      assetText.setText(`Loading asset: ${file.key}`);
+    });
 
-    this.load.on('complete', () => {
+    this.load.on("complete", () => {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
@@ -72,25 +75,28 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(10000, this.ready, [], this);
 
-    this.load.image('player', 'assets/player.png');
-    this.load.image('bullet', 'assets/bullet.png');
-    this.load.image('joystick', 'assets/joystick.png');
-    this.load.image('zombie', 'assets/zombie.png');
-    this.load.image('woman', 'assets/womanenemy.png');
-    this.load.image('startbutton', 'assets/startgame.png');
-    this.load.spritesheet('explosion', 'assets/explode.png', {
-      frameHeight : 32,
-      frameWidth : 32,
+    this.load.image("player", "assets/player.png");
+    this.load.image("bullet", "assets/bullet.png");
+    this.load.image("joystick", "assets/joystick.png");
+    this.load.image("zombie", "assets/zombie.png");
+    this.load.image("woman", "assets/womanenemy.png");
+    this.load.image("startbutton", "assets/startgame.png");
+    this.load.spritesheet("explosion", "assets/explode.png", {
+      frameHeight: 32,
+      frameWidth: 32,
     });
-    this.load.plugin('rexvirtualjoystickplugin', rexvirtualjoystickplugin,
-                     true);
+    this.load.plugin(
+      "rexvirtualjoystickplugin",
+      rexvirtualjoystickplugin,
+      true
+    );
   }
 
   ready() {
-    this.scene.start('titleScene');
+    this.scene.start("titleScene");
     this.readyCount += 1;
     if (this.readyCount === 2) {
-      this.scene.start('titleScene');
+      this.scene.start("titleScene");
     }
   }
 }

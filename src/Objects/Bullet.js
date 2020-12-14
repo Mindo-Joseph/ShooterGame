@@ -1,9 +1,9 @@
-import Phaser from 'phaser';
+import Phaser from "phaser";
 
 const BULLET_SPEED = 800;
 export default class Bullet extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y) {
-    super(scene, x, y, 'bullet');
+    super(scene, x, y, "bullet");
 
     this.born = 0;
   }
@@ -12,15 +12,15 @@ export default class Bullet extends Phaser.Physics.Arcade.Sprite {
     this.setRotation(shooter.rotation);
 
     // Offset the bullet to start a bit right of the shooter
-    this.x = shooter.x + (50 * Math.cos(this.rotation));
-    this.y = shooter.y + (50 * Math.sin(this.rotation));
-    if (role === 'enemy') {
-      this.x = shooter.x + (50 * Math.cos(Math.PI));
+    this.x = shooter.x + 50 * Math.cos(this.rotation);
+    this.y = shooter.y + 50 * Math.sin(this.rotation);
+    if (role === "enemy") {
+      this.x = shooter.x + 50 * Math.cos(Math.PI);
       this.setRotation(Math.PI);
-      this.setVelocityX((BULLET_SPEED) *
-                        Math.cos(Math.PI * (this.angle / 180)));
-      this.setVelocityY((BULLET_SPEED) *
-                        Math.sin(Math.PI * (this.angle / 180)) * -1);
+      this.setVelocityX(BULLET_SPEED * Math.cos(Math.PI * (this.angle / 180)));
+      this.setVelocityY(
+        BULLET_SPEED * Math.sin(Math.PI * (this.angle / 180)) * -1
+      );
     } else {
       this.setVelocityX(BULLET_SPEED * Math.cos(Math.PI * (this.angle / 180)));
       this.setVelocityY(BULLET_SPEED * Math.sin(Math.PI * (this.angle / 180)));
