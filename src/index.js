@@ -4,12 +4,16 @@ import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import TitleScene from './scenes/TitleScene';
 import GameScene from './scenes/GameScene';
+import GameOverScene from './scenes/GameOverScene';
 
 const config = {
   type: Phaser.AUTO,
   mode: Phaser.Scale.FIT,
   width: 960,
   height: 540,
+  dom: {
+    createContainer: true,
+  },
   backgroundColor: '#56ac68',
   autoCenter: Phaser.Scale.CENTER_BOTH,
   physics: {
@@ -37,6 +41,7 @@ class Game extends Phaser.Game {
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('titleScene', TitleScene);
     this.scene.add('gameScene', GameScene);
+    this.scene.add('gameOver', GameOverScene);
     this.scene.start('BootScene');
   }
 }

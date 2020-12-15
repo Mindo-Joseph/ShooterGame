@@ -2,10 +2,14 @@ import Phaser from 'phaser';
 import Bullet from '../Objects/Bullet';
 import ZombieEnemy from '../Zombie';
 import WomanEnemy from '../WomanEnemy';
+import setScore from '../leaderboard/leaderboard';
+import { SAVED_NAME } from './BootScene';
 
 const MAX_PLAYER_SPEED = 200;
-let life = 3;
-let kills = 0;
+
+let life = 0;
+// eslint-disable-next-line import/no-mutable-exports
+let kills = 1;
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('gameScene');
@@ -166,7 +170,8 @@ export default class GameScene extends Phaser.Scene {
       life -= 1;
       this.scene.restart();
     } else {
-      this.scene.start('titleScene');
+      this.scene.start('gameOver');
     }
   }
 }
+export { kills };

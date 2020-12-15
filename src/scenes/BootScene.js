@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import generateName from '../helpers/generatename';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -18,3 +19,7 @@ export default class BootScene extends Phaser.Scene {
     this.scene.start('Preloader');
   }
 }
+const SAVED_NAME = generateName();
+const playerName = generateName();
+
+export { SAVED_NAME, playerName };
