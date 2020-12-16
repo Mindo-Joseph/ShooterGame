@@ -1,4 +1,4 @@
-/* eslint no-use-before-define: 0 */
+/* eslint-disable no-use-before-define */
 module.exports = {
   presets: [
     [
