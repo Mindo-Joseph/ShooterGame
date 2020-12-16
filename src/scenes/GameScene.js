@@ -17,6 +17,7 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     this.player = this.physics.add.sprite(200, 200, 'player');
+    this.add.image(450, 270, 'background');
     this.anims.create({
       key: 'explode',
       frameRate: 10,
