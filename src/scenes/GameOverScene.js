@@ -32,6 +32,6 @@ export default class GameOverScene extends Phaser.Scene {
         fontStyle: 'bold',
       })
       .setOrigin(0.5);
-    setScore(gameDetails).then((name) => console.log(name));
+    setScore(gameDetails);
   }
 }

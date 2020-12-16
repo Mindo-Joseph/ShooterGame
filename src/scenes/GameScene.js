@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
 import Bullet from '../Objects/Bullet';
-import WomanEnemy from '../WomanEnemy';
-import ZombieEnemy from '../Zombie';
+
+import ZombieEnemy from '../Objects/Zombie';
 
 const MAX_PLAYER_SPEED = 200;
 
@@ -113,19 +113,7 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
-    this.time.addEvent({
-      delay: 10000,
-      callback() {
-        const enemy = new WomanEnemy(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          Phaser.Math.Between(0, this.game.config.height),
-        );
-        this.enemies.add(enemy);
-      },
-      callbackScope: this,
-      loop: true,
-    });
+
     this.time.addEvent({
       delay: 1000,
       callback() {
