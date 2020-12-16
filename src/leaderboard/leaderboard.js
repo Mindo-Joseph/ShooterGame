@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
-import regeneratorRuntime from "regenerator-runtime";
-import { SAVED_NAME } from "../scenes/BootScene";
+import regeneratorRuntime from 'regenerator-runtime';
+import { SAVED_NAME } from '../scenes/BootScene';
 
-const baseUrl =
-  "https://us-central1-js-capstone-backend.cloudfunctions.net/api/";
+const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
 
 const creategame = async () => {
   try {
@@ -11,9 +10,9 @@ const creategame = async () => {
       name: SAVED_NAME,
     };
     const response = await fetch(`${baseUrl}games/`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(config),
-      headers: { "Content-type": "application/json; charset=UTF-8" },
+      headers: { 'Content-type': 'application/json; charset=UTF-8' },
     });
     let data = await response.json();
     data = JSON.stringify(data);
@@ -33,17 +32,17 @@ const setScore = async (object) => {
       hashedGameName.push(string.slice(14, 34));
     });
 
-    const proxyUrl = "https://mysterious-ridge-02468.herokuapp.com/";
+    const proxyUrl = 'https://mysterious-ridge-02468.herokuapp.com/';
 
     const response = await fetch(
       `${proxyUrl}${baseUrl}games/${hashedGameName[0]}/scores`,
       {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(object),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
-      }
+      },
     );
     const data = await response.json();
     return data;

@@ -1,11 +1,8 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
-import setScore from "../leaderboard/leaderboard";
-import Bullet from "../Objects/Bullet";
-import WomanEnemy from "../WomanEnemy";
-import ZombieEnemy from "../Zombie";
-
-import { SAVED_NAME } from "./BootScene";
+import Bullet from '../Objects/Bullet';
+import WomanEnemy from '../WomanEnemy';
+import ZombieEnemy from '../Zombie';
 
 const MAX_PLAYER_SPEED = 200;
 
@@ -14,15 +11,16 @@ let life = 0;
 let kills = 1;
 export default class GameScene extends Phaser.Scene {
   constructor() {
-    super("gameScene");
+    super('gameScene');
   }
 
   create() {
-    this.player = this.physics.add.sprite(200, 200, "player");
+    this.player = this.physics.add.sprite(200, 200, 'player');
+    this.add.image(450, 270, 'background');
     this.anims.create({
-      key: "explode",
+      key: 'explode',
       frameRate: 10,
-      frames: this.anims.generateFrameNumbers("explosion", {
+      frames: this.anims.generateFrameNumbers('explosion', {
         start: 0,
         end: 9,
       }),
@@ -33,7 +31,7 @@ export default class GameScene extends Phaser.Scene {
 
     // Create movement joystick
     this.movementJoyStick = this.plugins
-      .get("rexvirtualjoystickplugin")
+      .get('rexvirtualjoystickplugin')
       .add(this.scene, {
         x: 100,
         y: this.cameras.main.height - 125,
@@ -41,16 +39,16 @@ export default class GameScene extends Phaser.Scene {
         forceMin: 0,
         base: this.add.circle(0, 0, 60, 0x888888).setDepth(100).setAlpha(0.25),
         thumb: this.add
-          .image(0, 0, "joystick")
+          .image(0, 0, 'joystick')
           .setDisplaySize(80, 80)
           .setDepth(100)
           .setAlpha(0.5),
       })
-      .on("update", () => {}, this);
+      .on('update', () => {}, this);
 
     // Create shooting joystick
     this.shootJoyStick = this.plugins
-      .get("rexvirtualjoystickplugin")
+      .get('rexvirtualjoystickplugin')
       .add(this.scene, {
         x: this.cameras.main.width - 100,
         y: this.cameras.main.height - 125,
@@ -61,15 +59,15 @@ export default class GameScene extends Phaser.Scene {
           .setDepth(100)
           .setAlpha(0.25),
         thumb: this.add
-          .image(0, 0, "joystick")
+          .image(0, 0, 'joystick')
           .setDisplaySize(80, 80)
           .setDepth(100)
           .setAlpha(0.5),
       })
-      .on("update", () => {}, this);
+      .on('update', () => {}, this);
 
     // Move joysticks dynamically based on pointer-down
-    this.input.on("pointerdown", (pointer) => {
+    this.input.on('pointerdown', (pointer) => {
       if (pointer.x <= this.cameras.main.width * 0.4) {
         this.movementJoyStick.base
           .setPosition(pointer.x, pointer.y)
@@ -85,7 +83,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     // Add transparency to joysticks on pointer-up
-    this.input.on("pointerup", () => {
+    this.input.on('pointerup', () => {
       if (!this.movementJoyStick.force) {
         this.movementJoyStick.base.setAlpha(0.25);
         this.movementJoyStick.thumb.setAlpha(0.5);
@@ -108,7 +106,7 @@ export default class GameScene extends Phaser.Scene {
         const enemy = new ZombieEnemy(
           this,
           Phaser.Math.Between(0, this.game.config.width),
-          Phaser.Math.Between(0, this.game.config.height)
+          Phaser.Math.Between(0, this.game.config.height),
         );
         this.enemies.add(enemy);
       },
@@ -121,7 +119,7 @@ export default class GameScene extends Phaser.Scene {
         const enemy = new WomanEnemy(
           this,
           Phaser.Math.Between(0, this.game.config.width),
-          Phaser.Math.Between(0, this.game.config.height)
+          Phaser.Math.Between(0, this.game.config.height),
         );
         this.enemies.add(enemy);
       },
@@ -139,9 +137,9 @@ export default class GameScene extends Phaser.Scene {
         Phaser.Actions.Call(
           this.enemies.getChildren(),
           (enemy) => {
-            bullet.fire(enemy, "enemy");
+            bullet.fire(enemy, 'enemy');
           },
-          this
+          this,
         );
       },
       callbackScope: this,
@@ -164,11 +162,11 @@ export default class GameScene extends Phaser.Scene {
 
       // Fire bullet according to joystick
       if (
-        this.shootJoyStick.force >= this.shootJoyStick.radius &&
-        this.bulletCooldown <= 0
+        this.shootJoyStick.force >= this.shootJoyStick.radius
+        && this.bulletCooldown <= 0
       ) {
         const bullet = this.bullets.get().setActive(true).setVisible(true);
-        bullet.fire(this.player, "shooter");
+        bullet.fire(this.player, 'shooter');
 
         this.bulletCooldown = 100;
       }
@@ -177,18 +175,17 @@ export default class GameScene extends Phaser.Scene {
     if (this.movementJoyStick.force) {
       // Calculate speed based on joystick force
       // eslint-disable-next-line max-len
-      const speedMultiplier =
-        this.movementJoyStick.force < this.movementJoyStick.radius
-          ? this.movementJoyStick.force / this.movementJoyStick.radius
-          : 1;
+      const speedMultiplier = this.movementJoyStick.force < this.movementJoyStick.radius
+        ? this.movementJoyStick.force / this.movementJoyStick.radius
+        : 1;
       const speed = MAX_PLAYER_SPEED * speedMultiplier;
 
       // Move player according to movement joystick
       this.player.setVelocityX(
-        speed * Math.cos(Math.PI * (this.movementJoyStick.angle / 180))
+        speed * Math.cos(Math.PI * (this.movementJoyStick.angle / 180)),
       );
       this.player.setVelocityY(
-        speed * Math.sin(Math.PI * (this.movementJoyStick.angle / 180))
+        speed * Math.sin(Math.PI * (this.movementJoyStick.angle / 180)),
       );
     } else {
       // Stop moving
@@ -209,7 +206,7 @@ export default class GameScene extends Phaser.Scene {
       life -= 1;
       this.scene.restart();
     } else {
-      this.scene.start("gameOver");
+      this.scene.start('gameOver');
     }
   }
 }

@@ -1,13 +1,13 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
-import setScore from "../leaderboard/leaderboard";
+import setScore from '../leaderboard/leaderboard';
 
-import { playerName } from "./BootScene";
-import { kills } from "./GameScene";
+import { playerName } from './BootScene';
+import { kills } from './GameScene';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
-    super("gameOver");
+    super('gameOver');
   }
 
   create() {
@@ -19,17 +19,17 @@ export default class GameOverScene extends Phaser.Scene {
     };
 
     this.message = this.add
-      .text(400, 100, "Game Over !!!", {
-        color: "#FFFFFF",
+      .text(400, 100, 'Game Over !!!', {
+        color: '#FFFFFF',
         fontSize: 60,
-        fontStyle: "bold",
+        fontStyle: 'bold',
       })
       .setOrigin(0.5);
     this.message = this.add
       .text(400, 200, kills, {
-        color: "#FFFFFF",
+        color: '#FFFFFF',
         fontSize: 60,
-        fontStyle: "bold",
+        fontStyle: 'bold',
       })
       .setOrigin(0.5);
     setScore(gameDetails).then((name) => console.log(name));
