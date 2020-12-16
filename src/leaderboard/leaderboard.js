@@ -34,14 +34,16 @@ const setScore = async (object) => {
 
     const proxyUrl = 'https://mysterious-ridge-02468.herokuapp.com/';
 
-    const response = await fetch(`${proxyUrl}${baseUrl}games/${hashedGameName[0]}/scores`, {
-      method: 'POST',
-      body: JSON.stringify(object),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-
+    const response = await fetch(
+      `${proxyUrl}${baseUrl}games/${hashedGameName[0]}/scores`,
+      {
+        method: 'POST',
+        body: JSON.stringify(object),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
       },
-    });
+    );
     const data = await response.json();
     return data;
   } catch (error) {
