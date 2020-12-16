@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import setScore from '../leaderboard/leaderboard';
+import { setScore }  from '../leaderboard/leaderboard';
 
 import { playerName, SAVED_NAME } from './BootScene';
 import { kills } from './GameScene';
