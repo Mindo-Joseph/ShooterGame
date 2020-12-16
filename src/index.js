@@ -14,7 +14,7 @@ const config = {
   dom: {
     createContainer: true,
   },
-  backgroundColor: '#56ac68',
+  backgroundColor: '#782f7a',
   autoCenter: Phaser.Scale.CENTER_BOTH,
   physics: {
     default: 'arcade',

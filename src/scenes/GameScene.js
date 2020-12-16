@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
 import Bullet from '../Objects/Bullet';
-import WomanEnemy from '../WomanEnemy';
-import ZombieEnemy from '../Zombie';
+
+import ZombieEnemy from '../Objects/Zombie';
 
 const MAX_PLAYER_SPEED = 200;
 
@@ -15,8 +15,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.player = this.physics.add.sprite(200, 200, 'player');
     this.add.image(450, 270, 'background');
+    this.player = this.physics.add.sprite(200, 200, 'player');
     this.anims.create({
       key: 'explode',
       frameRate: 10,
@@ -113,19 +113,7 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
-    this.time.addEvent({
-      delay: 10000,
-      callback() {
-        const enemy = new WomanEnemy(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          Phaser.Math.Between(0, this.game.config.height),
-        );
-        this.enemies.add(enemy);
-      },
-      callbackScope: this,
-      loop: true,
-    });
+
     this.time.addEvent({
       delay: 1000,
       callback() {
@@ -167,7 +155,8 @@ export default class GameScene extends Phaser.Scene {
       ) {
         const bullet = this.bullets.get().setActive(true).setVisible(true);
         bullet.fire(this.player, 'shooter');
-
+        this.sound.add('laser')
+          .play();
         this.bulletCooldown = 100;
       }
     }

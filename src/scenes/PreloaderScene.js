@@ -74,6 +74,7 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.timedEvent = this.time.delayedCall(10000, this.ready, [], this);
+
     this.load.image('background', 'assets/background.png');
     this.load.image('player', 'assets/player.png');
     this.load.image('bullet', 'assets/bullet.png');
@@ -81,10 +82,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('zombie', 'assets/zombie.png');
     this.load.image('woman', 'assets/womanenemy.png');
     this.load.image('startbutton', 'assets/startgame.png');
+    this.load.image('gameoverscreen', 'assets/gameover.png');
     this.load.spritesheet('explosion', 'assets/explode.png', {
       frameHeight: 32,
       frameWidth: 32,
     });
+
+    this.load.audio('laser', 'assets/laser.wav');
+    this.load.audio('gameover', 'assets/gameover.wav');
     this.load.plugin('rexvirtualjoystickplugin', rexvirtualjoystickplugin, true);
   }
 
