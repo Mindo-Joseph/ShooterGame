@@ -155,7 +155,8 @@ export default class GameScene extends Phaser.Scene {
       ) {
         const bullet = this.bullets.get().setActive(true).setVisible(true);
         bullet.fire(this.player, 'shooter');
-
+        this.sound.add('laser')
+          .play();
         this.bulletCooldown = 100;
       }
     }

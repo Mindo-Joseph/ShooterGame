@@ -21,15 +21,15 @@ test('service takes in a name and generates a gameId', async () => {
 });
 
 test('service sets score for a gameId', async () => {
-  fetch.mockResponseOnce(JSON.stringify([{ result: 'Leaderboard score created correctly.' }]));
+  fetch.mockResponse(JSON.stringify([{ result: 'Leaderboard score created correctly.' }]));
   const obj = {
     user: 'Test-User',
-    score: 30
+    score: 30,
   };
   const gameId = 'UFObeD7EaQp1TPJVNKUt';
   const onResponse = jest.fn();
   const onError = jest.fn();
-  return creategame(obj, gameId).then(onResponse).catch(onError).finally(() => {
+  return setScore(obj, gameId).then(onResponse).catch(onError).finally(() => {
     expect(onResponse).toHaveBeenCalled();
     expect(onError).not.toHaveBeenCalled();
     expect(onResponse.mock.calls[0][0][0]).toEqual({ result: 'Leaderboard score created correctly.' });

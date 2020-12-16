@@ -40,10 +40,13 @@ const setScore = async (object, key) => {
         body: JSON.stringify(object),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
+
         },
       },
     );
-    const data = await response.json();
+    let data = await response.json();
+    data = JSON.stringify(data);
+    data = JSON.parse(data);
     return data;
   } catch (error) {
     return error;

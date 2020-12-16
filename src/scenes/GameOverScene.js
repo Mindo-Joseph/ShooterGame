@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { setScore }  from '../leaderboard/leaderboard';
+import { setScore } from '../leaderboard/leaderboard';
 
 import { playerName, SAVED_NAME } from './BootScene';
 import { kills } from './GameScene';
@@ -18,15 +18,16 @@ export default class GameOverScene extends Phaser.Scene {
       score: kills,
     };
 
+    const button = this.add.image(450, 270, 'gameoverscreen').setScale(1.25);
+    button.setInteractive();
+    const self = this;
+    this.input.on('gameobjectdown', () => {
+      self.registry.destroy();
+      self.events.off();
+      self.scene.start('BootScene');
+    });
     this.message = this.add
-      .text(400, 100, 'Game Over !!!', {
-        color: '#FFFFFF',
-        fontSize: 60,
-        fontStyle: 'bold',
-      })
-      .setOrigin(0.5);
-    this.message = this.add
-      .text(400, 200, kills, {
+      .text(400, 320, kills, {
         color: '#FFFFFF',
         fontSize: 60,
         fontStyle: 'bold',

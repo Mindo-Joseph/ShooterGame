@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import generateName from '../src/helpers/generatename';
 
 test('should return a 5 character string', () => {
