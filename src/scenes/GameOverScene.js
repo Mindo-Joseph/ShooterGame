@@ -24,7 +24,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.input.on('gameobjectdown', () => {
       self.registry.destroy();
       self.events.off();
-      self.scene.start('BootScene');
+      self.scene.start('gameScene');
     });
     this.message = this.add
       .text(400, 320, kills, {
