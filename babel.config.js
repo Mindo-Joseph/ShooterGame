@@ -1,11 +1,11 @@
-/* eslint-disable no-use-before-define */
+
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         targets: {
-          node: "current",
+          node: 'current',
         },
       },
     ],
