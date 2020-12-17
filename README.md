@@ -20,6 +20,8 @@ This is a shooter game implemented using Phaser 3. The requirements were as foll
   - You should [use this service API](https://www.notion.so/microverse/Leaderboard-API-service-24c0c3c116974ac49488d4eb0267ade3) to save the score associated to the game and the user name, and display a leaderboard (as a Phaser scene)
 - The game must be deployed to a server so that it was accessible online
 
+## Game Design Document
+The design description can be found [here](../assets/../ShooterGame/assets/docs/gamedesigndocument.md)
 ## Screenshots
 
 ![Logo-Scene](./assets/screenshots/logoscene.png)

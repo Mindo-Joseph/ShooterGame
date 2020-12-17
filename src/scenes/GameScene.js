@@ -6,7 +6,7 @@ import ZombieEnemy from '../Objects/Zombie';
 
 const MAX_PLAYER_SPEED = 200;
 
-let life = 0;
+let life = 3;
 // eslint-disable-next-line import/no-mutable-exports
 let kills = 1;
 export default class GameScene extends Phaser.Scene {
