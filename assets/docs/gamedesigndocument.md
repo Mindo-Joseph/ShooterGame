@@ -28,6 +28,8 @@ A mysterious disease has ravaged Kantu, a small town , the people drop dead and 
 ## Score
 
 - Each enemy kill awards the user 3 points
+  
+  
 # Targets
 
 - Create effective JavaScript code
@@ -49,7 +51,7 @@ A mysterious disease has ravaged Kantu, a small town , the people drop dead and 
 - Use linters
 - Maintain a professional Github repo
 
-# Planification
+# Planning
 
 This project was developed in this schedule:
 

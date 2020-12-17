@@ -28,7 +28,7 @@ This is a shooter game implemented using Phaser 3. The requirements were as foll
 
 
 ## Live Link
-[To-Do](https://todo-app-tan.vercel.app/)
+[Zombie-Street](https://still-mountain-57347.herokuapp.com/)
 
 <!-- INSTALLATION -->
 ## Installation
@@ -39,5 +39,11 @@ This is a shooter game implemented using Phaser 3. The requirements were as foll
 * Install dependencies by running ```npm i``` in your terminal
 * Start the local server by using the following command ```npm run start```
 * Navigate to the site http://localhost:8080/main to play the game
-* 
+
+
+## How To Play
+- Left joystick for movement.
+
+- Right joystick to aim and fire.
+
   
