@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import BootScene from './scenes/BootScene';
 import GameOverScene from './scenes/GameOverScene';
 import GameScene from './scenes/GameScene';
+import LifeEndedScene from './scenes/lifeEndedScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import TitleScene from './scenes/TitleScene';
 
@@ -41,6 +42,7 @@ class Game extends Phaser.Game {
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('titleScene', TitleScene);
     this.scene.add('gameScene', GameScene);
+    this.scene.add('lifeEndedScene',LifeEndedScene)
     this.scene.add('gameOver', GameOverScene);
     this.scene.start('BootScene');
   }

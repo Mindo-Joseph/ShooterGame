@@ -6,7 +6,7 @@ import ZombieEnemy from '../Objects/Zombie';
 
 const MAX_PLAYER_SPEED = 200;
 
-let life = 3;
+let life = 2;
 // eslint-disable-next-line import/no-mutable-exports
 let kills = 1;
 export default class GameScene extends Phaser.Scene {
@@ -193,7 +193,7 @@ export default class GameScene extends Phaser.Scene {
   hitPlayer() {
     if (life > 0) {
       life -= 1;
-      this.scene.restart();
+      this.scene.start('lifeEndedScene')
     } else {
       this.scene.start('gameOver');
     }

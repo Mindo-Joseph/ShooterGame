@@ -82,6 +82,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('zombie', 'assets/zombie.png');
     this.load.image('woman', 'assets/womanenemy.png');
     this.load.image('startbutton', 'assets/startgame.png');
+    this.load.image('killedmenu', 'assets/killedmenu.png');
+    this.load.image('continuebtn', 'assets/continuebtn.png');
+    this.load.image('quitbutton', 'assets/quitbutton.png');
     this.load.image('gameoverscreen', 'assets/gameover.png');
     this.load.spritesheet('explosion', 'assets/explode.png', {
       frameHeight: 32,

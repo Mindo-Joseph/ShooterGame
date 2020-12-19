@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import regeneratorRuntime from 'regenerator-runtime';
-import { SAVED_NAME } from '../scenes/BootScene';
 
 const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
 
@@ -29,7 +28,6 @@ const scoreApiCall = async (object, hashedNameArray) => {
           'Content-type': 'application/json; charset=UTF-8',
 
         },
-        // Origin: 'http://localhost:8080',
       },
     );
 
@@ -40,12 +38,13 @@ const scoreApiCall = async (object, hashedNameArray) => {
     return error;
   }
 };
-const setScore = async (object) => {
+const setScore = async (object,name) => {
   const hashedGameName = [];
+  const gameName = name;
   try {
     const config = {
 
-      name: SAVED_NAME,
+      name: gameName,
     };
     creategame(config).then((name) => {
       let string = name.result;
