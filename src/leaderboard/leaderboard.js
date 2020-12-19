@@ -11,30 +11,17 @@ const creategame = async (object) => {
       body: JSON.stringify(object),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     });
-    let data = await response.json();
-    data = JSON.stringify(data);
-    data = JSON.parse(data);
+    const data = await response.json();
+
     return data;
   } catch (error) {
     return error;
   }
 };
-const hashedGameName = [];
-const setScore = async (object, key) => {
+const scoreApiCall = async (object, hashedNameArray) => {
   try {
-    const gameId = key;
-    const config = {
-      name: gameId,
-    };
-    creategame(config).then((name) => {
-      const string = name.result;
-      hashedGameName.push(string.slice(14, 34));
-    });
-
-    const proxyUrl = 'https://mysterious-ridge-02468.herokuapp.com/';
-
     const response = await fetch(
-      `${proxyUrl}${baseUrl}games/${hashedGameName[0]}/scores`,
+      `${baseUrl}games/${hashedNameArray[0]}/scores`,
       {
         method: 'POST',
         body: JSON.stringify(object),
@@ -42,12 +29,32 @@ const setScore = async (object, key) => {
           'Content-type': 'application/json; charset=UTF-8',
 
         },
+        // Origin: 'http://localhost:8080',
       },
     );
-    let data = await response.json();
-    data = JSON.stringify(data);
-    data = JSON.parse(data);
+
+    const data = await response.json();
+
     return data;
+  } catch (error) {
+    return error;
+  }
+};
+const setScore = async (object) => {
+  const hashedGameName = [];
+  try {
+    const config = {
+
+      name: SAVED_NAME,
+    };
+    creategame(config).then((name) => {
+      let string = name.result;
+      string = string.slice(14, 34);
+
+      hashedGameName.push(string);
+      scoreApiCall(object, hashedGameName);
+    });
+    return true;
   } catch (error) {
     return error;
   }
