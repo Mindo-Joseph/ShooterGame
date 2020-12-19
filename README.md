@@ -21,7 +21,7 @@ This is a shooter game implemented using Phaser 3. The requirements were as foll
 - The game must be deployed to a server so that it was accessible online
 
 ## Game Design Document
-The design description can be found [here](../assets/../ShooterGame/assets/docs/gamedesigndocument.md)
+The design description can be found [here](assets/docs/gamedesigndocument.md)
 ## Screenshots
 
 ![Logo-Scene](./assets/screenshots/logoscene.png)
