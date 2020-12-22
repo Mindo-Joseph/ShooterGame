@@ -42,7 +42,11 @@ The design description can be found [here](assets/docs/gamedesigndocument.md)
 - Checkout to the feature branch by `git checkout feature/shooter-game`
 - Install dependencies by running `npm i` in your terminal
 - Start the local server by using the following command `npm run start`
-- Navigate to the site http://localhost:8080/main to play the game
+- Check your terminal to see what port webpack-dev-server is working from, for example
+  ![termal-port](./assets/terminal.png)
+
+- Based on the image above I should navigate to the site http://localhost:8080/main to play the game.
+- **Don't forget the /main after http://localhost:8080**
 
 ## How To Play
 
