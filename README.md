@@ -7,7 +7,7 @@
   <h2 align="center">Project: Shooter Game </h2>
 
   <p align="center">
-    This project is part of the Microverse curriculum in Javascript module!
+    This project is part of the Microverse curriculum in JavaScript module!
   </p>
 </p>
 
