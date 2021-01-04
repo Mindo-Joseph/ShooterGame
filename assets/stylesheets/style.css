@@ -1,0 +1,45 @@
+* {
+  font-family: "Marcellus SC", serif;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+html {
+  background: url("../leaderboardbackground.png");
+}
+
+#container {
+  width: 100%;
+  margin: 5% auto;
+}
+
+.player1 {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  width: 65%;
+  height: 300px;
+  margin: 0 auto;
+}
+.player1 h1
+{
+  font-size: 60px;
+  color: white;
+  line-height: 100px;
+}
+.scoreblock {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 15px;
+  color: white;
+  position: relative;
+  float: left;
+  font-size: 100px;
+  line-height: 150px;
+  list-style: none;
+  left: 15%;
+  margin: 0 10px;
+  width: 20%;
+  height: 150px;
+}

@@ -17,10 +17,10 @@ const creategame = async (object) => {
     return error;
   }
 };
-const scoreApiCall = async (object, hashedNameArray) => {
+const scoreApiCall = async (object, hashedName) => {
   try {
     const response = await fetch(
-      `${baseUrl}games/${hashedNameArray[0]}/scores`,
+      `${baseUrl}games/${hashedName}/scores`,
       {
         method: 'POST',
         body: JSON.stringify(object),
@@ -38,23 +38,40 @@ const scoreApiCall = async (object, hashedNameArray) => {
     return error;
   }
 };
-const setScore = async (object,name) => {
-  const hashedGameName = [];
+const generateGameId = (name) => {
   const gameName = name;
+  const config = {
+    name: gameName,
+  };
+  creategame(config).then((name) => {
+    let string = name.result;
+    string = string.slice(14, 34);
+    console.log(string);
+    localStorage.setItem('Id', string);
+  });
+  return true;
+}
+const setScore = async (object, name) => {
   try {
-    const config = {
-
-      name: gameName,
-    };
-    creategame(config).then((name) => {
-      let string = name.result;
-      string = string.slice(14, 34);
-      hashedGameName.push(string);
-      scoreApiCall(object, hashedGameName);
-    });
+    generateGameId(name);
+    const id = localStorage.getItem('Id');
+    scoreApiCall(object, id);
     return true;
   } catch (error) {
     return error;
-  }
+  
+  };
 };
-export { creategame, setScore };
+const getScore = async (gameId) => {
+  const resultsArray = [];
+  try {
+    const response = await fetch(`${baseUrl}games/${gameId}/scores`, {
+      method: 'GET'
+    });
+    await response.json().then((results) => resultsArray.push(results.result));
+    return resultsArray;
+  } catch (error) {
+    return error;
+  }
+}
+export { creategame, setScore, getScore, generateGameId };
