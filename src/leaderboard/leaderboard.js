@@ -49,7 +49,6 @@ const setScore = async (object,name) => {
     creategame(config).then((name) => {
       let string = name.result;
       string = string.slice(14, 34);
-
       hashedGameName.push(string);
       scoreApiCall(object, hashedGameName);
     });
