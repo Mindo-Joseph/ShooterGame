@@ -7,7 +7,8 @@
 }
 
 html {
-  background: url("../leaderboardbackground.png");
+  background-color: gainsboro;
+  
 }
 
 #container {
@@ -17,8 +18,7 @@ html {
 
 .player1 {
   background-color: rgba(0, 0, 0, 0.8);
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-radius: 30px;
   width: 65%;
   height: 300px;
   margin: 0 auto;
@@ -28,6 +28,10 @@ html {
   font-size: 60px;
   color: white;
   line-height: 100px;
+}
+.leaderboardheader {
+  font-size: 100px;
+  margin-top: 5%;
 }
 .scoreblock {
   background-color: rgba(0, 0, 0, 0);

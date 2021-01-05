@@ -1,7 +1,6 @@
 import Phaser from "phaser";
 import { kills } from './GameScene';
-import { SAVED_NAME } from './BootScene';
-import { setScore, getScore, generateGameId } from '../leaderboard/leaderboard'
+import { setScore } from '../leaderboard/leaderboard';
 export default class InputPanel extends Phaser.Scene {
   constructor() {
     super("rexUI");
@@ -13,7 +12,7 @@ export default class InputPanel extends Phaser.Scene {
       fixedHeight: 45,
     });
     description.setOrigin(0.2, 0.2);
-    const text = this.add.text(400, 300, "Hello World", {
+    const text = this.add.text(400, 300, "Default User", {
       fixedWidth: 150,
       fixedHeight: 36,
     });
@@ -34,7 +33,7 @@ export default class InputPanel extends Phaser.Scene {
         user: username,
         score: kills,
       }
-      setScore(gameDetails, SAVED_NAME);
+      setScore(gameDetails);
      
     });
     cancel.setInteractive().on("pointerdown", () => {

@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 import { setScore } from '../leaderboard/leaderboard';
 
-import { playerName, SAVED_NAME } from './BootScene';
+import { playerName } from './BootScene';
 import { kills } from './GameScene';
 
 export default class GameOverScene extends Phaser.Scene {
@@ -33,6 +33,5 @@ export default class GameOverScene extends Phaser.Scene {
         fontStyle: 'bold',
       })
       .setOrigin(0.5);
-    setScore(gameDetails, SAVED_NAME);
   }
 }

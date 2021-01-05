@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import generateName from '../helpers/generatename';
-
+import { generateGameId } from '../leaderboard/leaderboard';
 export default class BootScene extends Phaser.Scene {
   constructor() {
     super('BootScene');
@@ -24,5 +24,5 @@ export default class BootScene extends Phaser.Scene {
 }
 const SAVED_NAME = generateName();
 const playerName = generateName();
-
-export { SAVED_NAME, playerName };
+generateGameId(SAVED_NAME);
+export { playerName };
