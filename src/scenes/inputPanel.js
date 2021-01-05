@@ -37,7 +37,8 @@ export default class InputPanel extends Phaser.Scene {
         score: kills,
       }
       setScore(gameDetails);
-      window.open("../src/leaderboard/leaderboard.html",  "_blank")
+      window.open("../src/leaderboard/leaderboard.html", "_blank")
+      location.reload();
      
     });
 
