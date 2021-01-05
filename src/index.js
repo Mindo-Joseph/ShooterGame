@@ -26,7 +26,7 @@ const config = {
       }
     ]
   },
-  backgroundColor: '#b75ccd',
+  backgroundColor: '#000',
   autoCenter: Phaser.Scale.CENTER_BOTH,
   physics: {
     default: 'arcade',

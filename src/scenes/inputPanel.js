@@ -5,28 +5,31 @@ export default class InputPanel extends Phaser.Scene {
   constructor() {
     super("rexUI");
   }
-  
+
+  getUsername(textToAdd) {
+    
+  }
   create() {
-    const description = this.add.text(180, 200, "Enter your name to use leaderboard", {
-      fixedWidth: 200,
-      fixedHeight: 45,
-    });
-    description.setOrigin(0.2, 0.2);
+    this.add.image(480, 200, 'namerequest').setScale(1.15);
     const text = this.add.text(400, 300, "Default User", {
       fixedWidth: 150,
       fixedHeight: 36,
     });
 
     text.setOrigin(0.5, 0.5);
-    const submit = this.add.image(180, 450, 'submitbtn').setScale(0.5);
-    const cancel = this.add.image(780, 450, 'cancelbtn').setScale(0.5);
-    text.setInteractive().on("pointerdown", () => {
+    
+    text.setInteractive().on("pointerdown", (event) => {
       const input = this.rexUI.edit(text);
-      const elem = input.inputText.node.value;
-      localStorage.setItem('playername', elem);
+      let code = event.keyCode;
+
+      if(code == Phaser.Input.Keyboard.KeyCodes.ENTER)
+      {
+        const elem = input.inputText.node.value;
+        localStorage.setItem('playername', elem);
+      }
 
     });
-    
+    const submit = this.add.image(480, 450, 'submitbtn').setScale(0.75);
     submit.setInteractive().on("pointerdown", () => {
       const username = localStorage.getItem('playername');
       const gameDetails = {
@@ -34,13 +37,12 @@ export default class InputPanel extends Phaser.Scene {
         score: kills,
       }
       setScore(gameDetails);
+      window.open("../src/leaderboard/leaderboard.html",  "_blank")
      
     });
-    cancel.setInteractive().on("pointerdown", () => {
-      window.open("../src/leaderboard/leaderboard.html",  "_blank")
-    })
+
     
   }
   
-  
+   
 }

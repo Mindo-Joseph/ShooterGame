@@ -86,8 +86,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('continuebtn', 'assets/continuebtn.png');
     this.load.image('quitbutton', 'assets/quitbutton.png');
     this.load.image('gameoverscreen', 'assets/gameover.png');
-    this.load.image('submitbtn', 'assets/submitbtn.png');
-    this.load.image('cancelbtn', 'assets/cancel.png');
+    this.load.image('namerequest', 'assets/namerequest.png');
+    this.load.image('submitbtn', 'assets/leaderboardviewbtn.png');
+    
 
     this.load.audio('laser', 'assets/laser.wav');
     this.load.audio('gameover', 'assets/gameover.wav');
