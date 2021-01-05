@@ -8,7 +8,6 @@
 
 html {
   background-color: gainsboro;
-  
 }
 
 #container {
@@ -23,16 +22,18 @@ html {
   height: 300px;
   margin: 0 auto;
 }
-.player1 h1
-{
+
+.player1 h1 {
   font-size: 60px;
   color: white;
   line-height: 100px;
 }
+
 .leaderboardheader {
   font-size: 100px;
   margin-top: 5%;
 }
+
 .scoreblock {
   background-color: rgba(0, 0, 0, 0);
   border-radius: 15px;

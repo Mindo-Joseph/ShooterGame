@@ -1,28 +1,25 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
 export default class LifeEndedScene extends Phaser.Scene {
   constructor() {
-    super("lifeEndedScene");
+    super('lifeEndedScene');
   }
   create() {
-    this.add.image(450, 270, "killedmenu").setScale(1.25);
-    const quitbutton = this.add.image(250, 400, "quitbutton").setInteractive();
+    this.add.image(450, 270, 'killedmenu').setScale(1.25);
+    const quitbutton = this.add.image(250, 400, 'quitbutton').setInteractive();
     const continuebtn = this.add
-      .image(500, 400, "continuebtn")
+      .image(500, 400, 'continuebtn')
       .setInteractive();
 
-    quitbutton.on("pointerdown", function() {
-      
+    quitbutton.on('pointerdown', () => {
       this.registry.destroy();
       this.events.off();
       this.scene.start('gameOver');
-    },this);
-
-    continuebtn.on("pointerdown", function()  {
-     
+    }, this);
+    continuebtn.on('pointerdown', () =>  {
       this.registry.destroy();
       this.events.off();
       this.scene.start('gameScene');
-    },this);
+    }, this);
   }
 }

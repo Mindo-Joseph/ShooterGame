@@ -193,7 +193,7 @@ export default class GameScene extends Phaser.Scene {
   hitPlayer() {
     if (life > 0) {
       life -= 1;
-      this.scene.start('lifeEndedScene')
+      this.scene.start('lifeEndedScene');
     } else {
       this.scene.start('rexUI');
     }
