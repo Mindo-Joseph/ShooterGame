@@ -1,8 +1,5 @@
 import Phaser from 'phaser';
 
-import { setScore } from '../leaderboard/leaderboard';
-
-import { playerName } from './BootScene';
 import { kills } from './GameScene';
 
 export default class GameOverScene extends Phaser.Scene {
@@ -11,13 +8,6 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    const gameDetails = {
-      // eslint-disable-next-line quote-props
-      user: playerName,
-      // eslint-disable-next-line quote-props
-      score: kills,
-    };
-
     const button = this.add.image(450, 270, 'gameoverscreen').setScale(1.25);
     button.setInteractive();
     const self = this;

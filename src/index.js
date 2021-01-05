@@ -22,9 +22,9 @@ const config = {
       {
         key: 'rexUI',
         plugin: RexUIPlugin,
-        mapping: 'rexUI'
-      }
-    ]
+        mapping: 'rexUI',
+      },
+    ],
   },
   backgroundColor: '#000',
   autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -50,11 +50,11 @@ class Game extends Phaser.Game {
   constructor() {
     super(config);
     this.scene.add('BootScene', BootScene);
-    this.scene.add('rexUI',InputPanel)
+    this.scene.add('rexUI', InputPanel);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('titleScene', TitleScene);
     this.scene.add('gameScene', GameScene);
-    this.scene.add('lifeEndedScene',LifeEndedScene)
+    this.scene.add('lifeEndedScene', LifeEndedScene);
     this.scene.add('gameOver', GameOverScene);
     this.scene.start('BootScene');
   }

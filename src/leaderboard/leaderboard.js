@@ -22,14 +22,13 @@ const generateGameId = (name) => {
   const config = {
     name: gameName,
   };
-  creategame(config).then((name) => {
-    let string = name.result;
+  creategame(config).then((gamename) => {
+    let string = gamename.result;
     string = string.slice(14, 34);
-    console.log(string);
     localStorage.setItem('Id', string);
   });
   return true;
-}
+};
 const scoreApiCall = async (object) => {
   try {
     const hashedName = localStorage.getItem('Id');
@@ -59,9 +58,8 @@ const setScore = async (object) => {
     scoreApiCall(object, id);
     return true;
   } catch (error) {
-    console.error(error);
-  
-  };
+    return error;
+  }
 };
 
-export { creategame, setScore,generateGameId };
+export { creategame, setScore, generateGameId };
