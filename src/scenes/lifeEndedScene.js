@@ -4,6 +4,7 @@ export default class LifeEndedScene extends Phaser.Scene {
   constructor() {
     super('lifeEndedScene');
   }
+
   create() {
     this.add.image(450, 270, 'killedmenu').setScale(1.25);
     const quitbutton = this.add.image(250, 400, 'quitbutton').setInteractive();
@@ -14,9 +15,9 @@ export default class LifeEndedScene extends Phaser.Scene {
     quitbutton.on('pointerdown', () => {
       this.registry.destroy();
       this.events.off();
-      this.scene.start('gameOver');
+      this.scene.start('rexUI');
     }, this);
-    continuebtn.on('pointerdown', () =>  {
+    continuebtn.on('pointerdown', () => {
       this.registry.destroy();
       this.events.off();
       this.scene.start('gameScene');

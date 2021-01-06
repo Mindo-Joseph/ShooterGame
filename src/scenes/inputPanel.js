@@ -21,21 +21,26 @@ export default class InputPanel extends Phaser.Scene {
       const code = event.keyCode;
 
       if (code === Phaser.Input.Keyboard.KeyCodes.ENTER) {
+        input.close();
         const elem = input.inputText.node.value;
+
         localStorage.setItem('playername', elem);
       }
     });
-    const submit = this.add.image(480, 450, 'submitbtn').setScale(0.75);
+    const submit = this.add.image(240, 400, 'submitbtn').setScale(0.75);
+    const mainMenu = this.add.image(500, 400, 'mainmenubtn').setScale(0.75);
     submit.setInteractive().on('pointerdown', () => {
       const username = localStorage.getItem('playername');
       const gameDetails = {
         user: username,
         score: kills,
       };
-      setScore(gameDetails);
+      setScore(gameDetails).then((message) => console.log(message));
       window.open('../src/leaderboard/leaderboard.html', '_blank');
-      // eslint-disable-next-line no-restricted-globals
-      location.reload();
+    });
+    mainMenu.setInteractive().on('pointerdown', () => {
+      this.game.destroy(true);
+      window.location.reload();
     });
   }
 }
