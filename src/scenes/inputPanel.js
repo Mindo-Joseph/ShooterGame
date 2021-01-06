@@ -35,7 +35,7 @@ export default class InputPanel extends Phaser.Scene {
         user: username,
         score: kills,
       };
-      setScore(gameDetails).then((message) => console.log(message));
+      setScore(gameDetails);
       window.open('../src/leaderboard/leaderboard.html', '_blank');
     });
     mainMenu.setInteractive().on('pointerdown', () => {

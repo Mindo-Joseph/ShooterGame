@@ -57,4 +57,5 @@ test('service sets score for a gameId', async () => {
   } catch (error) {
     return error;
   }
+  return true;
 });

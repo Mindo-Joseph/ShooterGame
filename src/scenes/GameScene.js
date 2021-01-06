@@ -199,4 +199,4 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 }
-export { kills , life};
+export { kills };
