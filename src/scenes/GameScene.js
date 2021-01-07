@@ -195,7 +195,7 @@ export default class GameScene extends Phaser.Scene {
       life -= 1;
       this.scene.start('lifeEndedScene');
     } else {
-      this.scene.start('rexUI');
+      this.scene.start('gameOver');
     }
   }
 }
