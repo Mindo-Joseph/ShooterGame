@@ -13,7 +13,8 @@ A mysterious disease has ravaged Kantu, a small town , the people drop dead and 
 - Left joystick for movement.
 
 - Right joystick to aim and fire.
-
+  
+**If either of these joysticks seem unresponsive refresh the page**
 
 ## GameFlow
 
