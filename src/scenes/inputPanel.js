@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
 
-
 export default class InputPanel extends Phaser.Scene {
   constructor() {
     super('nameInput');
