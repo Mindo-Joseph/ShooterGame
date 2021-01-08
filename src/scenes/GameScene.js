@@ -183,7 +183,6 @@ export default class GameScene extends Phaser.Scene {
     }
   }
   /* eslint class-methods-use-this: ["error", { "exceptMethods": ["hitEnemy"] }] */
-  
   hitEnemy(bullet, enemy) {
     bullet.destroy();
     enemy.destroy();
