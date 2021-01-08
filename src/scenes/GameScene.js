@@ -183,10 +183,9 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  hitEnemy() {
-    const { enemies } = this;
-    enemies.kill();
-    // eslint-disable-next-line no-unused-vars
+  hitEnemy(bullet,enemy) {
+    bullet.destroy();
+    enemy.destroy();
     kills += 1;
   }
 

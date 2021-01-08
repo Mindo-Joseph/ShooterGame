@@ -77,6 +77,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image('background', 'assets/background.png');
     this.load.html('form', 'dist/form.html');
+
     this.load.image('continue', 'assets/submitbtn.png');
     this.load.image('newgame', 'assets/newgamebtn.png');
     this.load.image('player', 'assets/player.png');
