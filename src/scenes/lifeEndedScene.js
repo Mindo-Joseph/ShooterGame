@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
-import { setScore } from '../leaderboard/leaderboard';
-import { kills } from './GameScene';
+
 export default class LifeEndedScene extends Phaser.Scene {
   constructor() {
     super('lifeEndedScene');

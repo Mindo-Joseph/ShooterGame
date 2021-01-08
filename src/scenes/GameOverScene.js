@@ -23,6 +23,6 @@ export default class GameOverScene extends Phaser.Scene {
     newgame.setInteractive().on('pointerdown', () => {
       this.game.destroy(true);
       window.location.reload();
-    })
+    });
   }
 }

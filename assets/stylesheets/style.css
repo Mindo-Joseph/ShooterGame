@@ -48,10 +48,12 @@ html {
   width: 20%;
   height: 150px;
 }
+
 #input-form {
   padding: 15px;
-  background-color: #931C22;
+  background-color: #931c22;
 }
+
 #input-form input {
   padding: 10px;
   font-size: 20px;
