@@ -1,31 +1,63 @@
 import Phaser from 'phaser';
-import logoImg from './assets/logo.png';
+import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
+import BootScene from './scenes/BootScene';
+import GameOverScene from './scenes/GameOverScene';
+import GameScene from './scenes/GameScene';
+import InputPanel from './scenes/inputPanel';
+import LifeEndedScene from './scenes/lifeEndedScene';
+import PreloaderScene from './scenes/PreloaderScene';
+import TitleScene from './scenes/TitleScene';
 
-function preload() {
-  this.load.image('logo', logoImg);
-}
-
-function create() {
-  const logo = this.add.image(400, 150, 'logo');
-
-  this.tweens.add({
-    targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: 'Power2',
-    yoyo: true,
-    loop: -1,
-  });
-}
 const config = {
   type: Phaser.AUTO,
-  parent: 'phaser-example',
-  width: 800,
-  height: 600,
-  scene: {
-    preload,
-    create,
+  mode: Phaser.Scale.FIT,
+  width: 960,
+  height: 540,
+  parent: 'phaser-conatiner',
+  dom: {
+    createContainer: true,
   },
+  plugins: {
+    scene: [
+      {
+        key: 'rexUI',
+        plugin: RexUIPlugin,
+        mapping: 'rexUI',
+      },
+    ],
+  },
+  backgroundColor: '#000',
+  autoCenter: Phaser.Scale.CENTER_BOTH,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: {
+        x: 0,
+        y: 0,
+      },
+      debug: false,
+    },
+  },
+  input: {
+    activePointers: 3,
+  },
+  scene: [],
+  pixelArt: true,
+  roundPixels: true,
 };
 
-const game = new Phaser.Game(config);
+class Game extends Phaser.Game {
+  constructor() {
+    super(config);
+    this.scene.add('BootScene', BootScene);
+    this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('nameInput', InputPanel);
+    this.scene.add('titleScene', TitleScene);
+    this.scene.add('gameScene', GameScene);
+    this.scene.add('lifeEndedScene', LifeEndedScene);
+    this.scene.add('gameOver', GameOverScene);
+    this.scene.start('BootScene');
+  }
+}
+
+window.game = new Game();
