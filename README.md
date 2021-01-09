@@ -22,6 +22,7 @@ This is a shooter game implemented using Phaser 3. The requirements were as foll
 
 ## Game Design Document
 The design description can be found [here](assets/docs/gamedesigndocument.md)
+
 ## Screenshots
 
 ![Logo-Scene](./assets/screenshots/logoscene.png)
@@ -45,14 +46,16 @@ The design description can be found [here](assets/docs/gamedesigndocument.md)
 - Check your terminal to see what port webpack-dev-server is working from, for example
   ![termal-port](./assets/terminal.png)
 
-- Based on the image above I should navigate to the site http://localhost:8080/main to play the game.
-- **Don't forget the /main after http://localhost:8080**
+- Based on the image above I should navigate to the site http://localhost:8080/ to play the game.
+
 
 ## How To Play
 
 - Left joystick for movement.
 
 - Right joystick to aim and fire.
+- 
+**If any of the joysticks seem unresponsive reload the page**
 
 ## How to run tests
 

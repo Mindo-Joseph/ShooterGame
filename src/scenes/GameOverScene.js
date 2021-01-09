@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-
+import { setScore } from '../leaderboard/leaderboard';
 import { kills } from './GameScene';
 
 export default class GameOverScene extends Phaser.Scene {
@@ -8,20 +8,21 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    const button = this.add.image(450, 270, 'gameoverscreen').setScale(1.25);
-    button.setInteractive();
-    const self = this;
-    this.input.on('gameobjectdown', () => {
-      self.registry.destroy();
-      self.events.off();
-      self.scene.start('gameScene');
+    const username = localStorage.getItem('playername');
+    const gameDetails = {
+      user: username,
+      score: kills,
+    };
+    setScore(gameDetails);
+    this.add.image(450, 200, 'gameoverscreen').setScale(1.25);
+    const viewboard = this.add.image(240, 400, 'viewboard').setScale(0.5);
+    const newgame = this.add.image(500, 400, 'newgame').setScale(0.5);
+    viewboard.setInteractive().on('pointerdown', () => {
+      window.open('../src/leaderboard/leaderboard.html', '_blank');
     });
-    this.message = this.add
-      .text(400, 320, kills, {
-        color: '#FFFFFF',
-        fontSize: 60,
-        fontStyle: 'bold',
-      })
-      .setOrigin(0.5);
+    newgame.setInteractive().on('pointerdown', () => {
+      this.game.destroy(true);
+      window.location.reload();
+    });
   }
 }

@@ -11,11 +11,10 @@ export default class LifeEndedScene extends Phaser.Scene {
     const continuebtn = this.add
       .image(500, 400, 'continuebtn')
       .setInteractive();
-
     quitbutton.on('pointerdown', () => {
       this.registry.destroy();
       this.events.off();
-      this.scene.start('rexUI');
+      this.scene.start('gameOver');
     }, this);
     continuebtn.on('pointerdown', () => {
       this.registry.destroy();

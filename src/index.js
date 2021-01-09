@@ -50,8 +50,8 @@ class Game extends Phaser.Game {
   constructor() {
     super(config);
     this.scene.add('BootScene', BootScene);
-    this.scene.add('rexUI', InputPanel);
     this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('nameInput', InputPanel);
     this.scene.add('titleScene', TitleScene);
     this.scene.add('gameScene', GameScene);
     this.scene.add('lifeEndedScene', LifeEndedScene);

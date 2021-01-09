@@ -76,6 +76,10 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(10000, this.ready, [], this);
 
     this.load.image('background', 'assets/background.png');
+    this.load.html('form', 'dist/form.html');
+
+    this.load.image('continue', 'assets/submitbtn.png');
+    this.load.image('newgame', 'assets/newgamebtn.png');
     this.load.image('player', 'assets/player.png');
     this.load.image('bullet', 'assets/bullet.png');
     this.load.image('joystick', 'assets/joystick.png');
@@ -85,20 +89,19 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('killedmenu', 'assets/killedmenu.png');
     this.load.image('continuebtn', 'assets/continuebtn.png');
     this.load.image('quitbutton', 'assets/quitbutton.png');
-    this.load.image('gameoverscreen', 'assets/gameover.png');
+    this.load.image('gameoverscreen', 'assets/over.png');
     this.load.image('namerequest', 'assets/namerequest.png');
-    this.load.image('submitbtn', 'assets/leaderboardviewbtn.png');
-    this.load.image('mainmenubtn', 'assets/mainmenu.png');
+    this.load.image('viewboard', 'assets/viewboard.png');
     this.load.audio('laser', 'assets/laser.wav');
     this.load.audio('gameover', 'assets/gameover.wav');
     this.load.plugin('rexvirtualjoystickplugin', rexvirtualjoystickplugin, true);
   }
 
   ready() {
-    this.scene.start('titleScene');
+    this.scene.start('nameInput');
     this.readyCount += 1;
     if (this.readyCount === 2) {
-      this.scene.start('titleScene');
+      this.scene.start('nameInput');
     }
   }
 }
